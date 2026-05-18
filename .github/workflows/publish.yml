@@ -39,12 +39,12 @@ jobs:
       - name: Sign whitelist
         env:
           WHITELIST_PRIVATE_KEY_BASE64: ${{ secrets.WHITELIST_SIGNING_KEY }}
-          WHITELIST_KEY_ID: whitelist-v2
+          WHITELIST_KEY_ID: whitelist-v1
         run: node scripts/sign-whitelist.mjs
       - name: Verify signature (sanity check)
         env:
           WHITELIST_PUBLIC_KEY_BASE64: ${{ vars.WHITELIST_PUBLIC_KEY_BASE64 }}
-          WHITELIST_KEY_ID: whitelist-v2
+          WHITELIST_KEY_ID: whitelist-v1
         run: node scripts/verify-whitelist.mjs
       - name: Commit artifacts if changed
         run: |
