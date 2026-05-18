@@ -44,6 +44,7 @@ jobs:
       - name: Verify signature (sanity check)
         env:
           WHITELIST_PUBLIC_KEY_BASE64: ${{ vars.WHITELIST_PUBLIC_KEY_BASE64 }}
+          WHITELIST_KEY_ID: whitelist-v2
         run: node scripts/verify-whitelist.mjs
       - name: Commit artifacts if changed
         run: |
