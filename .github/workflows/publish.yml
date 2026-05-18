@@ -1,0 +1,68 @@
+name: Publish whitelist
+
+# Triggered manually or when a maintainer pushes a `v1-*` tag. The job:
+#   1. Rebuilds `v1/whitelist.json` from `src/grants/*.json`.
+#   2. Signs it with the `WHITELIST_SIGNING_KEY` Actions secret.
+#   3. Verifies the signature locally (sanity check) using the public key
+#      committed to the LVIS app's `marketplace-keys.ts`.
+#   4. Commits the regenerated artifacts to `main` if changed.
+#   5. Creates or updates the `v1-latest` GitHub Release with both files
+#      attached so the fallback URL serves a stable artifact.
+#
+# Pages serves `/v1/whitelist.json` (and the `.sig` sidecar) directly
+# from `main`; no Pages build step is required beyond the source push.
+
+on:
+  push:
+    tags:
+      - "v1-*"
+  workflow_dispatch:
+    inputs:
+      validity-days:
+        description: "Validity window in days (default 90)"
+        required: false
+        default: "90"
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Rebuild whitelist
+        run: node scripts/build-whitelist.mjs --validity-days "${{ github.event.inputs.validity-days || '90' }}"
+      - name: Sign whitelist
+        env:
+          WHITELIST_PRIVATE_KEY_BASE64: ${{ secrets.WHITELIST_SIGNING_KEY }}
+        run: node scripts/sign-whitelist.mjs
+      - name: Verify signature (sanity check)
+        env:
+          WHITELIST_PUBLIC_KEY_BASE64: ${{ vars.WHITELIST_PUBLIC_KEY_BASE64 }}
+        run: node scripts/verify-whitelist.mjs
+      - name: Commit artifacts if changed
+        run: |
+          git config user.name "lvis-bot"
+          git config user.email "lvis-bot@users.noreply.github.com"
+          git add v1/whitelist.json v1/whitelist.json.sig
+          if git diff --staged --quiet; then
+            echo "no changes to artifacts"
+          else
+            git commit -m "chore(publish): regenerate v1/whitelist.json"
+            git push origin HEAD:main
+          fi
+      - name: Upload to v1-latest release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if gh release view v1-latest >/dev/null 2>&1; then
+            gh release upload v1-latest v1/whitelist.json v1/whitelist.json.sig --clobber
+          else
+            gh release create v1-latest v1/whitelist.json v1/whitelist.json.sig \
+              --title "v1 — latest whitelist" \
+              --notes "Auto-generated fallback assets. Signed by whitelist-v1."
+          fi

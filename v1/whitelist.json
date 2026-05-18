@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "schemaVersion": 1,
+  "issuedAt": "2026-05-18T00:00:08.931Z",
+  "expiresAt": "2026-08-16T00:00:08.931Z",
+  "pluginGrants": {
+    "local-indexer": {
+      "publisher": "lvis-community",
+      "hostSecrets": {
+        "read": [
+          "llm.apiKey.openai",
+          "llm.apiKey.claude",
+          "llm.apiKey.gemini",
+          "llm.apiKey.azure-foundry",
+          "llm.apiKey.vertex-ai"
+        ]
+      },
+      "approvedManifestSha256": "56bece60f5c2a2940f574a57abd22a795df0699b2a5b09e64cc8ca860b101736"
+    },
+    "meeting": {
+      "publisher": "lvis-community",
+      "hostSecrets": {
+        "read": [
+          "llm.apiKey.openai",
+          "llm.apiKey.claude",
+          "llm.apiKey.gemini",
+          "llm.apiKey.azure-foundry",
+          "llm.apiKey.vertex-ai"
+        ]
+      },
+      "approvedManifestSha256": "760e311a6cbbc16337a3cc921a4e6361782e0f837bf0733d541d9e2c2121ad03"
+    }
+  }
+}

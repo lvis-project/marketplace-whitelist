@@ -1,0 +1,13 @@
+{
+  "publisher": "lvis-community",
+  "hostSecrets": {
+    "read": [
+      "llm.apiKey.openai",
+      "llm.apiKey.claude",
+      "llm.apiKey.gemini",
+      "llm.apiKey.azure-foundry",
+      "llm.apiKey.vertex-ai"
+    ]
+  },
+  "approvedManifestSha256": "760e311a6cbbc16337a3cc921a4e6361782e0f837bf0733d541d9e2c2121ad03"
+}
