@@ -1,8 +1,8 @@
 {
   "version": 1,
   "schemaVersion": 1,
-  "issuedAt": "2026-05-18T02:06:43.871Z",
-  "expiresAt": "2026-08-16T02:06:43.871Z",
+  "issuedAt": "2026-05-18T13:01:45.217Z",
+  "expiresAt": "2026-08-16T13:01:45.217Z",
   "pluginGrants": {
     "local-indexer": {
       "publisher": "lvis-community",
@@ -15,7 +15,7 @@
           "llm.apiKey.vertex-ai"
         ]
       },
-      "approvedManifestSha256": "56bece60f5c2a2940f574a57abd22a795df0699b2a5b09e64cc8ca860b101736"
+      "approvedManifestSha256": "699f04f841a8356f80566ff068f40e05b0b47b0764dd3cd87a725c75dbc0f132"
     },
     "meeting": {
       "publisher": "lvis-community",
@@ -28,7 +28,7 @@
           "llm.apiKey.vertex-ai"
         ]
       },
-      "approvedManifestSha256": "760e311a6cbbc16337a3cc921a4e6361782e0f837bf0733d541d9e2c2121ad03"
+      "approvedManifestSha256": "999e66f61ca9c9e2b356cf3dd4e9a2e0e6c4abad0fc934ca6c70ee521b941ae3"
     }
   }
 }
