@@ -1,8 +1,8 @@
 {
   "version": 1,
   "schemaVersion": 1,
-  "issuedAt": "2026-05-18T01:57:58.441Z",
-  "expiresAt": "2026-08-16T01:57:58.441Z",
+  "issuedAt": "2026-05-18T01:59:01.260Z",
+  "expiresAt": "2026-08-16T01:59:01.260Z",
   "pluginGrants": {
     "local-indexer": {
       "publisher": "lvis-community",
