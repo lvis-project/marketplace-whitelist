@@ -1,12 +1,12 @@
 {
   "version": 1,
-  "iat": 1779069541,
-  "artifact_sha256": "2a8d112be5ccf7d0f92038be8ab63497a10fcfe9d97089e95583a2c654ebc234",
+  "iat": 1779069728,
+  "artifact_sha256": "a7f04b0345d21775e80ed0e1a01e72bee38ba5b6a10ac60ffd2cf643b0c38d02",
   "signatures": [
     {
-      "key_id": "whitelist-v1",
+      "key_id": "whitelist-v2",
       "alg": "ed25519",
-      "sig": "M2zL0spTgr61S330SfinnYyR0ngRocsR1F7dWfRrDYajLfYt9UG1GUHe1zEG/Jfc7i/Secddb+9pNMbRTyieCw=="
+      "sig": "siRTkzh6ok+0/TLWNT3xlq43fUvx+Uiu58dQm82ZbhTZZdOtkN5irnMO3xwJbv4NHJQsJuGAw2U7HvV2XzN/Aw=="
     }
   ]
 }
